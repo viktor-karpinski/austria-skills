@@ -1,0 +1,135 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-size: 62.5%;
+  font-family: "Noto Sans", sans-serif;
+  text-decoration: none;
+  border: 0;
+  border-radius: 0.5rem;
+  outline: none;
+  overflow: scroll hidden;
+}
+
+button,
+a,
+label,
+input,
+textarea {
+  cursor: pointer;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+#login-main {
+  border-radius: 0rem !important;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 1rem;
+  width: 100vw;
+  min-height: 100vh;
+  background: -webkit-gradient(linear, left top, left bottom, from(#e66465), to(#9198e5));
+  background: linear-gradient(#e66465, #9198e5);
+}
+
+#login-main aside {
+  display: none;
+}
+
+#login-main #login-form {
+  width: 100%;
+  padding: 2rem;
+  background-color: rgba(255, 200, 255, 0.3);
+  -webkit-backdrop-filter: blur(1rem);
+          backdrop-filter: blur(1rem);
+  border: 0.1rem solid rgba(255, 200, 255, 0.4);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#login-main #login-form .error {
+  color: #ff0000d6;
+  text-align: center;
+  padding: 0.3rem;
+  border: 0.1rem solid #ff0000d6;
+  height: 0rem;
+  display: none;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+#login-main #login-form label,
+#login-main #login-form button,
+#login-main #login-form .error {
+  font-size: 2rem;
+  margin-top: 1.5rem;
+}
+
+#login-main #login-form input {
+  height: 5rem;
+  margin: 1rem 0;
+  font-size: 1.5rem;
+  padding: 0 1rem;
+  background-color: rgba(255, 200, 255, 0.5);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+#login-main #login-form input:focus {
+  -webkit-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.5);
+          box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.5);
+}
+
+#login-main #login-form button {
+  height: 5rem;
+  background-color: #8c78cc;
+}
+
+@media only screen and (min-width: 600px) {
+  #login-main {
+    padding: 2rem;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  #login-main {
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    padding: 4rem;
+  }
+  #login-main form {
+    width: 48% !important;
+  }
+  #login-main form button {
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+  }
+  #login-main form button:focus {
+    -webkit-transform: scale(1.025);
+            transform: scale(1.025);
+  }
+  #login-main aside {
+    display: block;
+    width: 50%;
+  }
+  #login-main aside img {
+    width: 100%;
+  }
+}
+/*# sourceMappingURL=style.css.map */
