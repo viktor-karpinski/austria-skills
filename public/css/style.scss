@@ -157,8 +157,112 @@ header {
 
     background: linear-gradient(#e66465, #9198e5);
 
-    padding: 8rem 4rem;
+    padding: 8rem 4rem 4rem;
     display: flex;
+    column-gap: 4rem;
+
+    aside {
+        width: 25%;
+
+        background-color: rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(10px);
+        border: 0.2rem solid rgba(255, 255, 255, 0.2);
+        padding: 1rem;
+
+        div {
+            cursor: pointer;
+            padding: 2rem;
+            width: 100%;
+
+            border: 0.2rem solid #fafafa;
+            margin-bottom: 2rem;
+
+            &:last-of-type {
+                margin-bottom: 0rem;
+            }
+        }
+    }
+
+    article {
+        width: 75%;
+        margin-left: auto;
+        display: flex;
+        flex-direction: column;
+
+        ul {
+            display: grid;
+            grid-template-columns: 15% 15% 15% 10% 20% 20% 5%;
+            padding: 1.5rem 0;
+
+            &.first {
+                background-color: #fafafa;
+                border-bottom-left-radius: 0;
+                border-bottom-right-radius: 0;
+                padding: 2rem 0;
+
+                li {
+                    span {
+                        margin-left: 0.5rem;
+                        width: 1rem;
+                        display: inline-block;
+
+                        img {
+                            opacity: 0.5;
+                            width: 100%;
+                        }
+                    }
+
+                    &.up {
+                        img {
+                            &:first-of-type {
+                                opacity: 1;
+                            }
+                        }
+                    }
+
+                    &.down {
+                        img {
+                            &:last-of-type {
+                                opacity: 1;
+                            }
+                        }
+                    }
+                }
+            }
+
+            li {
+                padding: 0 1.5rem;
+                font-size: 1.2rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-wrap: wrap;
+
+                button {
+                    background-color: rgba(0, 0, 0, 0);
+
+                    img {
+                        width: 100%;
+                    }
+                }
+
+                .tag {
+                    background-color: rgba(0, 0, 0, 0.2);
+                    padding: 0.3rem;
+                    font-size: 1rem;
+                    margin: 0.25rem;
+                }
+            }
+        }
+
+        div {
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+            background-color: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
+            border: 0.2rem solid rgba(255, 255, 255, 0.2);
+        }
+    }
 }
 
 @media only screen and (min-width: 600px) {

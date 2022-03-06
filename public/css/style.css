@@ -171,10 +171,119 @@ header aside a {
   min-height: 100vh;
   background: -webkit-gradient(linear, left top, left bottom, from(#e66465), to(#9198e5));
   background: linear-gradient(#e66465, #9198e5);
-  padding: 8rem 4rem;
+  padding: 8rem 4rem 4rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-column-gap: 4rem;
+          column-gap: 4rem;
+}
+
+#main aside {
+  width: 25%;
+  background-color: rgba(255, 255, 255, 0.3);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  border: 0.2rem solid rgba(255, 255, 255, 0.2);
+  padding: 1rem;
+}
+
+#main aside div {
+  cursor: pointer;
+  padding: 2rem;
+  width: 100%;
+  border: 0.2rem solid #fafafa;
+  margin-bottom: 2rem;
+}
+
+#main aside div:last-of-type {
+  margin-bottom: 0rem;
+}
+
+#main article {
+  width: 75%;
+  margin-left: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#main article ul {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 15% 15% 15% 10% 20% 20% 5%;
+      grid-template-columns: 15% 15% 15% 10% 20% 20% 5%;
+  padding: 1.5rem 0;
+}
+
+#main article ul.first {
+  background-color: #fafafa;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  padding: 2rem 0;
+}
+
+#main article ul.first li span {
+  margin-left: 0.5rem;
+  width: 1rem;
+  display: inline-block;
+}
+
+#main article ul.first li span img {
+  opacity: 0.5;
+  width: 100%;
+}
+
+#main article ul.first li.up img:first-of-type {
+  opacity: 1;
+}
+
+#main article ul.first li.down img:last-of-type {
+  opacity: 1;
+}
+
+#main article ul li {
+  padding: 0 1.5rem;
+  font-size: 1.2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+#main article ul li button {
+  background-color: rgba(0, 0, 0, 0);
+}
+
+#main article ul li button img {
+  width: 100%;
+}
+
+#main article ul li .tag {
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 0.3rem;
+  font-size: 1rem;
+  margin: 0.25rem;
+}
+
+#main article div {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  background-color: rgba(255, 255, 255, 0.3);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  border: 0.2rem solid rgba(255, 255, 255, 0.2);
 }
 
 @media only screen and (min-width: 600px) {

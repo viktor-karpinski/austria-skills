@@ -22,67 +22,168 @@
 </header>
 
 <section id="main">
-    <aside>
-        <div class="side-box"></div>
-        <div class="side-box"></div>
-        <div class="side-box"></div>
-        <div class="side-box"></div>
+    <aside id="side-box">
+        <div class="side-box">1</div>
+        <div class="side-box">2</div>
+        <div class="side-box">3</div>
+        <div class="side-box">4</div>
     </aside>
 
     <article>
-        <ul>
+        <ul class="first">
             <li>
                 DATE 
-                <span></span>
+                <span>
+                    <img src="{{ asset('images/arrow-up.png') }}">
+                    <img src="{{ asset('images/arrow-down.png') }}">
+                </span>
             </li>
              <li>
                 TYPE 
-                <span></span>
+                <span>
+                    <img src="{{ asset('images/arrow-up.png') }}">
+                    <img src="{{ asset('images/arrow-down.png') }}">
+                </span>
             </li>
              <li>
                 CATEGORY 
-                <span></span>
+                <span>
+                    <img src="{{ asset('images/arrow-up.png') }}">
+                    <img src="{{ asset('images/arrow-down.png') }}">
+                </span>
             </li>
              <li>
                 TIME 
-                <span></span>
+                <span>
+                    <img src="{{ asset('images/arrow-up.png') }}">
+                    <img src="{{ asset('images/arrow-down.png') }}">
+                </span>
             </li>
              <li>
                 NOTES 
-                <span></span>
             </li>
              <li>
                 TAGS 
-                <span></span>
             </li>
             <li>
 
             </li>
         </ul>
-         <ul>
-            <li>
-                placeholder 
-            </li>
-             <li>
-                placeholder 
-            </li>
-             <li>
-                placeholder 
-            </li>
-             <li>
-                placeholder 
-            </li>
-             <li>
-                placeholder 
-            </li>
-             <li>
-                placeholder 
-            </li>
-            <li>
-                
-            </li>
-        </ul>
+         <div>
+            <ul>
+                <li>
+                    30.10.2022
+                </li>
+                <li>
+                    private project
+                </li>
+                <li>
+                    Frontend
+                </li>
+                <li>
+                    5h
+                </li>
+                <li>
+                    Lorem ipsum dolor sit amet. Igmund das ist Lorems.
+                </li>
+                <li>
+                    <span class="tag">
+                        CSS
+                    </span>
+                    <span class="tag">
+                        HTML
+                    </span>
+                    <span class="tag">
+                        jQuery
+                    </span>
+                    <span class="tag">
+                        Laravel
+                    </span>
+                    <span class="tag">
+                        SQL
+                    </span>
+                    <span class="tag">
+                        SCSS
+                    </span>
+                </li>
+                <li>
+                    <button>
+                        <img src="{{ asset('images/edit.png') }}">
+                    </button>
+                </li>
+            </ul>
+         </div>
     </article>
 </section>
+
+<script>
+/*createSortable('#side-box')
+
+function createSortable(selector) {
+  var sortable = document.querySelector(selector);
+  Draggable.create(sortable.children, {
+    type: "y",
+    bounds: sortable,
+    edgeResistance: 1,
+    onPress: sortablePress,
+    onDragStart: sortableDragStart,
+    onDrag: sortableDrag,
+    liveSnap: sortableSnap,
+    onDragEnd: sortableDragEnd
+  });
+}
+
+function sortablePress() {
+  var t = this.target,
+      i = 0,
+      child = t;
+  while(child = child.previousSibling)
+    if (child.nodeType === 1) i++;
+  t.currentIndex = i;
+  t.currentHeight = t.offsetHeight;
+  t.kids = [].slice.call(t.parentNode.children); // convert to array
+}
+
+function sortableDragStart() {
+  TweenLite.set(this.target, { background: "#fafafa" });
+}
+                 
+function sortableDrag() {
+  var t = this.target,
+      elements = t.kids.slice(), // clone
+      indexChange = Math.round(this.y / t.currentHeight),
+      bound1 = t.currentIndex,
+      bound2 = bound1 + indexChange;
+  if (bound1 < bound2) { // moved down
+    TweenLite.to(elements.splice(bound1+1, bound2-bound1), 0.15, { yPercent: -200 });
+    TweenLite.to(elements, 0.15, { yPercent: 0 });
+  } else if (bound1 === bound2) {
+    elements.splice(bound1, 1);
+    TweenLite.to(elements, 0.15, { yPercent: 0 });
+  } else { // moved up
+    TweenLite.to(elements.splice(bound2, bound1-bound2), 0.15, { yPercent: 200 });
+    TweenLite.to(elements, 0.15, { yPercent: 0 });
+  }
+}
+
+function sortableSnap(y) {
+  var h = this.target.currentHeight;
+  return Math.round(y / h) * h;
+}
+                 
+function sortableDragEnd() {
+  var t = this.target,
+      max = t.kids.length - 1,
+      newIndex = Math.round(this.y / t.currentHeight);
+  newIndex += (newIndex < 0 ? -1 : 0) + t.currentIndex;
+  if (newIndex === max) {
+    t.parentNode.appendChild(t);
+  } else {
+    t.parentNode.insertBefore(t, t.kids[newIndex+1]);
+  }
+  TweenLite.set(t.kids, { yPercent: 0, overwrite: "all" });
+  TweenLite.set(t, { y: 0, background: "transparent" });
+}*/
+</script>
 
 @endsection
