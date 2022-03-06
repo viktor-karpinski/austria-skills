@@ -70,6 +70,7 @@
             </li>
         </ul>
          <div>
+
             <ul>
                 <li>
                     30.10.2022
@@ -106,12 +107,87 @@
                         SCSS
                     </span>
                 </li>
-                <li>
+                <li class="last">
                     <button>
                         <img src="{{ asset('images/edit.png') }}">
                     </button>
                 </li>
             </ul>
+
+            <ul>
+                <li>
+                    30.10.2022
+                </li>
+                <li>
+                    private project
+                </li>
+                <li>
+                    Frontend
+                </li>
+                <li>
+                    5h
+                </li>
+                <li>
+                    Lorem ipsum dolor sit amet. Igmund das ist Lorems.
+                </li>
+                <li>
+                    <span class="tag">
+                        CSS
+                    </span>
+                    <span class="tag">
+                        HTML
+                    </span>
+                    <span class="tag">
+                        jQuery
+                    </span>
+                    <span class="tag">
+                        Laravel
+                    </span>
+                    <span class="tag">
+                        SQL
+                    </span>
+                    <span class="tag">
+                        SCSS
+                    </span>
+                </li>
+                <li class="last">
+                    <button>
+                        <img src="{{ asset('images/edit.png') }}">
+                    </button>
+                </li>
+            </ul>
+
+            <ul>
+                <li>
+                    30.10.2022
+                </li>
+                <li>
+                    private project
+                </li>
+                <li>
+                    Frontend
+                </li>
+                <li>
+                    5h
+                </li>
+                <li>
+                    Lorem ipsum 
+                </li>
+                <li>
+                    <span class="tag">
+                        CSS
+                    </span>
+                    <span class="tag">
+                        HTML
+                    </span>
+                </li>
+                <li class="last">
+                    <button>
+                        <img src="{{ asset('images/edit.png') }}">
+                    </button>
+                </li>
+            </ul>
+
          </div>
     </article>
 </section>

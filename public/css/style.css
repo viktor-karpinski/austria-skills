@@ -38,8 +38,7 @@ h1 {
   padding: 1rem;
   width: 100vw;
   min-height: 100vh;
-  background: -webkit-gradient(linear, left top, left bottom, from(#e66465), to(#9198e5));
-  background: linear-gradient(#e66465, #9198e5);
+  background-image: linear-gradient(-30deg, #ff9966, 70%, #ff5e62);
 }
 
 #login-main aside {
@@ -49,10 +48,10 @@ h1 {
 #login-main #login-form {
   width: 100%;
   padding: 2rem;
-  background-color: rgba(255, 200, 255, 0.3);
-  -webkit-backdrop-filter: blur(1rem);
-          backdrop-filter: blur(1rem);
-  border: 0.1rem solid rgba(255, 200, 255, 0.4);
+  background-color: rgba(255, 255, 255, 0.3);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  border: 0.2rem solid rgba(255, 255, 255, 0.2);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -85,7 +84,8 @@ h1 {
   margin: 1rem 0;
   font-size: 1.5rem;
   padding: 0 1rem;
-  background-color: rgba(255, 200, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.3);
+  border: 0.2rem solid rgba(255, 255, 255, 0.2);
   -webkit-transition: 0.3s;
   transition: 0.3s;
 }
@@ -97,7 +97,7 @@ h1 {
 
 #login-main #login-form button {
   height: 5rem;
-  background-color: #8c78cc;
+  background-color: #ff6b63;
 }
 
 header {
@@ -123,7 +123,7 @@ header {
 header button,
 header aside a {
   height: 4rem;
-  border: 0.2rem solid #e66465;
+  border: 0.2rem solid #ff6b63;
   background-color: transparent;
   font-size: 1.5rem;
   padding: 1rem;
@@ -169,8 +169,7 @@ header aside a {
   border-radius: 0rem !important;
   width: 100vw;
   min-height: 100vh;
-  background: -webkit-gradient(linear, left top, left bottom, from(#e66465), to(#9198e5));
-  background: linear-gradient(#e66465, #9198e5);
+  background-image: linear-gradient(-30deg, #ff9966, 70%, #ff5e62);
   padding: 8rem 4rem 4rem;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -218,6 +217,12 @@ header aside a {
   -ms-grid-columns: 15% 15% 15% 10% 20% 20% 5%;
       grid-template-columns: 15% 15% 15% 10% 20% 20% 5%;
   padding: 1.5rem 0;
+  border-bottom: 0.2rem solid rgba(255, 255, 255, 0.2);
+  border-radius: 0;
+}
+
+#main article ul:last-of-type {
+  border: 0;
 }
 
 #main article ul.first {
@@ -260,6 +265,10 @@ header aside a {
           justify-content: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+}
+
+#main article ul li.last {
+  padding-left: 0.3rem;
 }
 
 #main article ul li button {

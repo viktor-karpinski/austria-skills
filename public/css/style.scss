@@ -38,7 +38,7 @@ h1 {
     width: 100vw;
     min-height: 100vh;
 
-    background: linear-gradient(#e66465, #9198e5);
+    background-image: linear-gradient(-30deg, #ff9966, 70%, #ff5e62);
 
     aside {
         display: none;
@@ -48,10 +48,9 @@ h1 {
         width: 100%;
         padding: 2rem;
 
-        background-color: rgba(255, 200, 255, 0.3);
-        backdrop-filter: blur(1rem);
-
-        border: 0.1rem solid rgba(255, 200, 255, 0.4);
+        background-color: rgba(255, 255, 255, 0.3);
+        backdrop-filter: blur(10px);
+        border: 0.2rem solid rgba(255, 255, 255, 0.2);
 
         display: flex;
         flex-direction: column;
@@ -79,7 +78,8 @@ h1 {
             font-size: 1.5rem;
             padding: 0 1rem;
 
-            background-color: rgba(255, 200, 255, 0.5);
+            background-color: rgba(255, 255, 255, 0.3);
+            border: 0.2rem solid rgba(255, 255, 255, 0.2);
 
             transition: 0.3s;
 
@@ -90,7 +90,7 @@ h1 {
 
         button {
             height: 5rem;
-            background-color: #8c78cc;
+            background-color: #ff6b63;
         }
     }
 }
@@ -114,7 +114,7 @@ header {
     button,
     aside a {
         height: 4rem;
-        border: 0.2rem solid #e66465;
+        border: 0.2rem solid #ff6b63;
         background-color: transparent;
 
         font-size: 1.5rem;
@@ -155,7 +155,7 @@ header {
     width: 100vw;
     min-height: 100vh;
 
-    background: linear-gradient(#e66465, #9198e5);
+    background-image: linear-gradient(-30deg, #ff9966, 70%, #ff5e62);
 
     padding: 8rem 4rem 4rem;
     display: flex;
@@ -193,6 +193,12 @@ header {
             display: grid;
             grid-template-columns: 15% 15% 15% 10% 20% 20% 5%;
             padding: 1.5rem 0;
+            border-bottom: 0.2rem solid rgba(255, 255, 255, 0.2);
+            border-radius: 0;
+
+            &:last-of-type {
+                border: 0;
+            }
 
             &.first {
                 background-color: #fafafa;
@@ -237,6 +243,10 @@ header {
                 align-items: center;
                 justify-content: center;
                 flex-wrap: wrap;
+
+                &.last {
+                    padding-left: 0.3rem;
+                }
 
                 button {
                     background-color: rgba(0, 0, 0, 0);
