@@ -295,6 +295,181 @@ header aside a {
   border: 0.2rem solid rgba(255, 255, 255, 0.2);
 }
 
+.shadow-box {
+  z-index: 3;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.1);
+  -webkit-backdrop-filter: blur(3px);
+          backdrop-filter: blur(3px);
+  border-radius: 0;
+  display: none;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 1vw;
+  opacity: 0;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.shadow-box article {
+  width: 40vw;
+  padding: 2rem;
+  background-color: rgba(255, 255, 255, 0.3);
+  border: 0.2rem solid rgba(255, 255, 255, 0.2);
+  -webkit-transition: all 500ms cubic-bezier(0.47, 1.64, 0.41, 0.8);
+  transition: all 500ms cubic-bezier(0.47, 1.64, 0.41, 0.8);
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  position: relative;
+}
+
+.shadow-box article button.close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 1.5rem;
+  padding: 1rem;
+  background-color: transparent;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 0;
+  border-left: 0.2rem solid rgba(255, 255, 255, 0.2);
+  border-bottom: 0.2rem solid rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.2);
+  border-bottom-left-radius: 0.5rem;
+}
+
+.shadow-box article button.close span {
+  font-size: 2rem;
+  padding-right: 0.5rem;
+}
+
+.shadow-box article form {
+  margin-top: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.shadow-box article form label {
+  font-size: 1.5rem;
+  margin-bottom: -1.2rem;
+  z-index: 2;
+}
+
+.shadow-box article form input,
+.shadow-box article form textarea {
+  width: 100%;
+  height: 4rem;
+  border: 0.2rem solid rgba(255, 255, 255, 0.3);
+  border-radius: 1rem;
+  padding: 1rem;
+  font-size: 1.5rem;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  background-color: transparent;
+}
+
+.shadow-box article form input:focus,
+.shadow-box article form textarea:focus {
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.shadow-box article form textarea {
+  height: 10rem;
+  resize: none;
+}
+
+.shadow-box article form .word-counter {
+  margin: 0.5rem;
+  display: block;
+  text-align: right;
+  font-size: 1rem;
+}
+
+.shadow-box article form .validation {
+  display: block;
+  text-align: right;
+  font-size: 1rem;
+  text-align: center;
+  padding: 1rem;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.shadow-box article form .validation .validation-char {
+  font-size: 1rem;
+  font-weight: 400;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.5rem;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.shadow-box article form .error {
+  color: #ff0000;
+  font-weight: 400;
+}
+
+.shadow-box article form .error .validation-char {
+  color: #ff0000;
+}
+
+.shadow-box article form .save {
+  width: 0%;
+  height: 4rem;
+  font-size: 1.5rem;
+  background-color: #4caf50;
+  color: #4caf50;
+  overflow: hidden;
+  margin: 2rem auto 0rem;
+  -webkit-transition: all 300ms cubic-bezier(0.47, 1.64, 0.41, 0.8);
+  transition: all 300ms cubic-bezier(0.47, 1.64, 0.41, 0.8);
+  border-radius: 1rem;
+}
+
+.shadow-box article form .save:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.shadow-box article form .admin-save-show {
+  width: 100%;
+  color: #ffffff;
+}
+
+.open-box {
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+}
+
+.open-box-opacity {
+  opacity: 1 !important;
+}
+
+.open-box-come {
+  -webkit-transform: scale(1) !important;
+          transform: scale(1) !important;
+}
+
 @media only screen and (min-width: 600px) {
   #login-main {
     padding: 2rem;

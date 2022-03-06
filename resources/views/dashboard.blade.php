@@ -21,6 +21,44 @@
     </aside>
 </header>
 
+<section class="shadow-box">
+    <article id="add-box">
+        <h1>
+            Add training
+        </h1>
+
+        <button class="close" data-id="#add-box">
+            <span>X</span>
+            Close
+        </button>
+
+        <form id="add-form">
+            @csrf
+            <label for="training-type">
+                Type *
+            </label>
+            <span for="training-type" class="word-counter">
+                0 / 64
+            </span>
+            <input id="training-type" name="training-type" type="text" placeholder="private project" class="general-input" autocomplete="off" required>
+            <span for="training-type" class="validation">
+                Only 
+                <span class="validation-char">a - z, A - Z</span>, 
+                <span class="validation-char">0 - 9</span> and
+                <span class="validation-char">ä, ö, ü, Ä, Ö, Ü</span> are allowed.
+            </span>
+
+            <label for="training-note">
+                Notes
+            </label>
+            <span for="training-note" class="word-counter">
+                0 / 255
+            </span>
+            <textarea id="training-note" name="training-note" type="text" placeholder="I did CSS, alot." class="general-input" autocomplete="off" required></textarea>
+        </form>
+    </article>
+</section>
+
 <section id="main">
     <aside id="side-box">
         <div class="side-box">1</div>
@@ -261,5 +299,7 @@ function sortableDragEnd() {
   TweenLite.set(t, { y: 0, background: "transparent" });
 }*/
 </script>
+
+<script src="{{ asset('js/main.js') }}"></script>
 
 @endsection
