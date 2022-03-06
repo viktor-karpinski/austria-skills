@@ -100,6 +100,83 @@ h1 {
   background-color: #8c78cc;
 }
 
+header {
+  width: 100vw;
+  height: 6rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #fafafa;
+  border-bottom: 0.1rem slid #ddd;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 4rem;
+}
+
+header button,
+header aside a {
+  height: 4rem;
+  border: 0.2rem solid #e66465;
+  background-color: transparent;
+  font-size: 1.5rem;
+  padding: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+header button span,
+header aside a span {
+  font-size: 2.5rem;
+  margin-right: 1rem;
+}
+
+header aside {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+header aside h2 {
+  font-size: 1.2rem;
+  margin-right: 1rem;
+}
+
+header aside a {
+  display: inline-block;
+  padding: 0 1rem;
+  line-height: 2.6rem;
+  font-size: 1.2rem;
+  height: 3rem;
+  color: black;
+  border-color: #9198e5;
+}
+
+#main {
+  border-radius: 0rem !important;
+  width: 100vw;
+  min-height: 100vh;
+  background: -webkit-gradient(linear, left top, left bottom, from(#e66465), to(#9198e5));
+  background: linear-gradient(#e66465, #9198e5);
+  padding: 8rem 4rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 @media only screen and (min-width: 600px) {
   #login-main {
     padding: 2rem;

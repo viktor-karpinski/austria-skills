@@ -7,6 +7,7 @@
         <span>
             +
         </span>
+        ADD NEW
     </button>
 
     <aside>
