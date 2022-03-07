@@ -18,10 +18,20 @@ $('#edit-time').on('input', () => {
 })
 
 $('form div label').on('click', (ev) => {
-    $('form div label').removeClass('selected')
-    $(ev.target).addClass('selected')
+    if ($(ev.target).attr('class') === undefined) {
+        $('form .container:first-of-type label').removeClass('selected')
+        $(ev.target).addClass('selected')
+    } else if ($(ev.target).attr('class') === 'check selected') {
+        $(ev.target).removeClass('selected')
+    } else {
+        $(ev.target).addClass('selected')
+    }
+
+    
     if ($(ev.target).parent().parent().attr('id') === 'add-form')
         setTimeout(() => {checkForm()}, 100)
+    else
+    setTimeout(() => {checkEdit()}, 100)
 })
 
 $('#training-type').on('keyup', () => {
@@ -38,12 +48,16 @@ $('#edit-type').on('keyup', () => {
         $('#edit-button').attr('disabled', true)
     else 
         $('#edit-button').attr('disabled', false)
-    checkForm()
+    checkEdit()
 })
 
 
 $('#training-note').on('keyup', () => {
     checkInput($('#training-note'), '', 255)
+})
+
+$('#edit-note').on('keyup', () => {
+    checkInput($('#edit-note'), '', 255)
 })
 
 $('#add-new').on('click', () => {
@@ -54,7 +68,6 @@ $('#add-new').on('click', () => {
 $('.edit-button').on('click', (ev) => {
     let id = $('#'+$(ev.target).parent().parent().parent().attr('id'))
     openBox('#editing-box')
-    //$('#edit-date').val(id.find('.date').text().trim())
     $('#edit-type').val(id.find('.type').text().trim())
     checkInput($('#edit-type'), '^[A-Za-z0-9äöüÄÖÜ ]*$', 64)
     $('#edit-note').val(id.find('.notes').text().trim())
@@ -62,6 +75,12 @@ $('.edit-button').on('click', (ev) => {
     $('label[for="edit-'+id.find('.category').text().trim()+'"]').trigger('click')
     $('#edit-time').val(id.find('.time').text().trim().slice(0,-1))
     checkRange('#edit-time')
+
+    id.find('.tags').children().each((index) => {
+        let tagId = id.find('.tags').find('span')[index].dataset.id.split('-').pop()
+        $('label[for="edit-tag-'+tagId+'"]').trigger('click')
+    })
+    $('#edit-id').val($(ev.target).parent().parent().parent().attr('id'))
 })
 
 $('#add-form').on('submit', (ev) => {
@@ -73,18 +92,41 @@ $('#add-form').on('submit', (ev) => {
             url: 'check-entry',
             data: $('#add-form').serialize(),
             success: (data) => {
-                if (parseInt(data) === 1)
+                if (parseInt(data) === 1) {
                     closeBox('#add-box')
-                else
+                    setTimeout(() => {location.reload()}, 300) // HAHAHAHAHAH
+                } else {
                     $('#add-button').attr('disabled', true)
                     $('#add-form .main-error').addClass('show')
+                }
             }, error: () => {
                 $('#add-button').attr('disabled', true)
                 $('#add-form .main-error').addClass('show')
             }
         })
+})
 
-    
+$('#editing-form').on('submit', (ev) => {
+    ev.preventDefault()
+
+    if (checkEdit())
+        $.ajax({
+            method: 'POST',
+            url: 'edit-entry',
+            data: $('#editing-form').serialize(),
+            success: (data) => {
+                if (parseInt(data) === 1) {
+                    closeBox('#editing-box')
+                    setTimeout(() => {location.reload()}, 300) // HAHAHAHAHAH
+                } else {
+                    $('#edit-button').attr('disabled', true)
+                    $('#editing-form .main-error').addClass('show')
+                }
+            }, error: (data) => {
+                $('#edit-button').attr('disabled', true)
+                $('#editing-form .main-error').addClass('show')
+            }
+        })
 })
 
 $('.close').on('click', (ev) => {
@@ -107,6 +149,27 @@ function checkForm() {
     } else {
         $('#add-button').attr('disabled', false)
         $('#add-form .main-error').removeClass('show')
+    }
+
+    return send
+}
+
+function checkEdit() {
+    let send = true
+    if ($('#edit-type').val().length < 2)
+        send = false
+    else if (checkInput($('#edit-type'), '^[A-Za-z0-9äöüÄÖÜ ]*$', 64))
+        send = false
+
+    if ($("#editing-form input[type='radio']:checked").val() === undefined)
+        send = false
+
+    if (!send) {
+        $('#edit-button').attr('disabled', true)
+        $('#editing-form .main-error').addClass('show')
+    } else {
+        $('#edit-button').attr('disabled', false)
+        $('#editing-form .main-error').removeClass('show')
     }
 
     return send

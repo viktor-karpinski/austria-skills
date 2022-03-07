@@ -59,6 +59,18 @@
                 0 / 255
             </span>
             <textarea id="training-note" name="note" type="text" placeholder="I did CSS, alot." class="general-input" autocomplete="off" required></textarea>
+            <br><br><br>
+            <h2>
+                Tags
+            </h2>
+            <div class="container">
+            @php
+            foreach($tags as $tag) {
+                echo '<input type="checkbox" name="tags[]" value="' .$tag->id. '" id="tag-'.$tag->id.'" required>';
+                echo '<label for="tag-'.$tag->id.'" class="check">'.$tag->name.'</label>';
+            }
+            @endphp
+            </div>
             <p class="main-error">
                 Please include all necessary input for an entry correctly!
             </p>

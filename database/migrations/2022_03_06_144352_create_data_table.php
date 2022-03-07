@@ -15,7 +15,7 @@ class CreateDataTable extends Migration
     {
         Schema::create('data', function (Blueprint $table) {
             $table->id();
-            $table->date('date')->format('d/m/Y')->duseCurrent();
+            $table->date('date')->format('d/m/Y')->useCurrent();
             $table->string('type', 64);
             $table->string('category');
             $table->string('time');

@@ -12,6 +12,20 @@
   overflow: hidden scroll;
 }
 
+::-webkit-scrollbar {
+  width: 0;
+  /* Remove scrollbar space */
+  background: transparent;
+  /* Optional: just make scrollbar invisible */
+  width: 0;
+}
+
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+  background: transparent;
+  width: 0;
+}
+
 button,
 a,
 label,
@@ -106,8 +120,9 @@ header {
   position: fixed;
   top: 0;
   left: 0;
-  background-color: #fafafa;
-  border-bottom: 0.1rem slid #ddd;
+  background-color: #ffffff;
+  border-bottom: 0.1rem solid #ddd;
+  z-index: 1000;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -202,8 +217,9 @@ header aside a {
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -271,7 +287,7 @@ header aside a {
   width: 80%;
   height: 7rem;
   margin: auto;
-  background-color: #fafafa;
+  background-color: #ffffff;
   border-radius: 50%;
 }
 
@@ -320,7 +336,7 @@ header aside a {
 }
 
 #main article ul.first {
-  background-color: #fafafa;
+  background-color: #ffffff;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
   padding: 2rem 0;
@@ -392,7 +408,7 @@ header aside a {
 }
 
 .shadow-box {
-  z-index: 3;
+  z-index: 1001;
   position: fixed;
   top: 0;
   bottom: 0;
@@ -409,7 +425,7 @@ header aside a {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 1vw;
+  padding: 10vw 0 5vw;
   opacity: 0;
   -webkit-transition: 0.3s;
   transition: 0.3s;
@@ -495,9 +511,11 @@ header aside a {
   -ms-flex-pack: distribute;
       justify-content: space-around;
   height: auto;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
-.shadow-box article form div.container input[type="radio"] {
+.shadow-box article form div.container input[type="radio"], .shadow-box article form div.container input[type="checkbox"] {
   height: 0;
   width: 0;
   display: none;
@@ -506,7 +524,7 @@ header aside a {
 .shadow-box article form div.container label {
   background-color: rgba(0, 0, 0, 0.1);
   padding: 0.5rem;
-  margin: 0 !important;
+  margin: 0.5rem !important;
   -webkit-transition: 0.3s;
   transition: 0.3s;
 }
@@ -631,7 +649,7 @@ header aside a {
 .shadow-box article form .main-error.show {
   height: auto;
   padding: 1rem;
-  margin-top: 2rem;
+  margin-top: 1rem;
   border-width: 0.1rem;
 }
 
@@ -694,6 +712,105 @@ header aside a {
   }
   #login-main aside img {
     width: 100%;
+  }
+}
+
+@media only screen and (max-width: 1100px) {
+  header {
+    padding: 0 10vw;
+  }
+  .shadow-box article {
+    z-index: 1001;
+    width: 60vw;
+  }
+  #main {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  #main article,
+  #main aside {
+    width: 80vw;
+    margin: 0;
+  }
+  #main article {
+    margin-bottom: 2rem;
+  }
+  #main aside {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-column-gap: 2%;
+            column-gap: 2%;
+  }
+  #main aside .side-box {
+    width: 49%;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  #main aside .side-box:first-of-type h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+  }
+  #main aside .side-box:first-of-type p {
+    font-size: 2rem;
+  }
+}
+
+@media only screen and (max-width: 930px) {
+  header {
+    padding: 0 2.5vw;
+  }
+  #main article,
+  #main aside {
+    width: 95vw;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  #main article {
+    white-space: nowrap;
+    overflow: scroll;
+  }
+  #main article ul {
+    width: 800px;
+  }
+  #main article ul li span {
+    white-space: normal;
+  }
+  #main article div {
+    white-space: nowrap;
+    overflow: scroll;
+  }
+  #main article div ul {
+    width: 800px;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .side-box {
+    width: 100% !important;
+  }
+  .shadow-box article {
+    z-index: 1001;
+    width: 95vw;
   }
 }
 /*# sourceMappingURL=style.css.map */

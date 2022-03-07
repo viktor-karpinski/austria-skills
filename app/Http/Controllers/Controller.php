@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Session;
 
 use App\Models\User;
 use App\Models\Data;
+use App\Models\Tag;
 
 class Controller extends BaseController
 {
@@ -23,27 +24,13 @@ class Controller extends BaseController
             $user = User::where('email', '=', Session::get('user'))->first();
 
             $data = Data::where('user_id', '=', $user->id)->get();
-            /*$dataDateTop = Data::where('user_id', '=', $user->id)->orderBy('date', 'ASC');
-            $dataDateBottom = Data::where('user_id', '=', $user->id)->orderBy('date', 'DESC');
-            $dataTypeTop = Data::where('user_id', '=', $user->id)->orderBy('type', 'ASC');
-            $dataTypeBottom = Data::where('user_id', '=', $user->id)->orderBy('type', 'DESC');
-            $dataCategoryTop = Data::where('user_id', '=', $user->id)->orderBy('category', 'ASC');
-            $dataCategoryBottom = Data::where('user_id', '=', $user->id)->orderBy('category', 'DESC');
-            $dataTimeTop = Data::where('user_id', '=', $user->id)->orderBy('time', 'ASC');
-            $dataTimeTop = Data::where('user_id', '=', $user->id)->orderBy('time', 'DESC');*/
+
+            $tags = Tag::all();
 
             return view('dashboard', [
                 'user' => $user,
                 'data' => $data,
-                /*'dataTimeTop' => $dataDateTop,
-                'dataDateBottom' => $dataDateBottom,
-                'dataTypeTop' => $dataTypeTop,
-                'dataTypeBottom' => $dataTypeBottom,
-                'dataCategoryTop' => $dataCategoryTop,
-                'dataCategoryTop' => $dataCategoryTop,
-                'dataCategoryBottom' => $dataCategoryBottom,
-                'dataTimeTop' => $dataTimeTop,
-                'dataTimeTop' => $dataTimeTop,*/
+                'tags' => $tags,
             ]);
         }
         return redirect('/login');
@@ -100,6 +87,10 @@ class Controller extends BaseController
         $data->category =  htmlspecialchars($req->category);
         $data->notes =  htmlspecialchars($req->note);
         $data->user_id = $user->id;
+        foreach ($req->tags as $tag) {
+            $data->tags .= $tag . ';';
+        }
+
         if ($data->save()) {
             return 1;
         }
@@ -109,5 +100,27 @@ class Controller extends BaseController
 
     public function editEntry(Request $req)
     {
+        $req->validate([
+            'type' => 'required|min:2|max:64|regex:/^[a-zA-Z äöüÄÖÜ]+$/u',
+            'ecategory' => 'required',
+            'time' => 'required',
+        ]);
+
+        $data = Data::where('id', '=', htmlspecialchars($req->id))->first();
+
+        $data->type = htmlspecialchars($req->type);
+        $data->time =  htmlspecialchars($req->time);
+        $data->category =  htmlspecialchars($req->ecategory);
+        $data->notes =  htmlspecialchars($req->note);
+        $data->tags = '';
+        foreach ($req->etags as $tag) {
+            $data->tags .= $tag . ';';
+        }
+
+        if ($data->save()) {
+            return 1;
+        }
+
+        return 0;
     }
 }

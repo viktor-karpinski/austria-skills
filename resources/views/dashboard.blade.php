@@ -24,6 +24,90 @@
 @include('editBox')
 
 <section id="main">
+    <article>
+        <ul class="first">
+            <li>
+                DATE 
+                <span>
+                    <img src="{{ asset('images/arrow-up.png') }}">
+                    <img src="{{ asset('images/arrow-down.png') }}">
+                </span>
+            </li>
+             <li>
+                TYPE 
+                <span>
+                    <img src="{{ asset('images/arrow-up.png') }}">
+                    <img src="{{ asset('images/arrow-down.png') }}">
+                </span>
+            </li>
+             <li>
+                CATEGORY 
+                <span>
+                    <img src="{{ asset('images/arrow-up.png') }}">
+                    <img src="{{ asset('images/arrow-down.png') }}">
+                </span>
+            </li>
+             <li>
+                TIME 
+                <span>
+                    <img src="{{ asset('images/arrow-up.png') }}">
+                    <img src="{{ asset('images/arrow-down.png') }}">
+                </span>
+            </li>
+             <li>
+                NOTES 
+            </li>
+             <li>
+                TAGS 
+            </li>
+            <li>
+
+            </li>
+        </ul>
+         <div>
+            @php
+            $tagz_arr = array();
+            @endphp
+            @foreach ($data as $d)
+                <ul id="{{ $d->id }}">
+                    <li class="date">
+                        {{ $d->date }}
+                    </li>
+                    <li class="type">
+                        {{ $d->type }}
+                    </li>
+                    <li class="category">
+                        {{ $d->category }}
+                    </li>
+                    <li class="time">
+                       {{ $d->time }}h
+                    </li>
+                    <li class="notes">
+                        {{ $d->notes }}
+                    </li>
+                    <li class="tags">
+
+                        @php
+                        $tagz = explode(';', $d->tags);
+                        array_pop($tagz);
+                        foreach ($tags as $tag) {
+                            if (in_array($tag->id, $tagz)) {
+                                array_push($tagz_arr, $tag->id);
+                                echo '<span class="tag" data-id="edit-tag-' .$tag->id. '">' .$tag->name. '</span>';
+                            }
+                        }
+                        @endphp
+                    </li>
+                    <li class="last">
+                        <button class="edit-button">
+                            <img src="{{ asset('images/edit.png') }}">
+                        </button>
+                    </li>
+                </ul>
+             @endforeach
+
+         </div>
+    </article>
     <aside id="side-box">
         @php
         $total = 0;
@@ -74,6 +158,8 @@
         $tim = ($frontendTime + $backendTime + $fullstackTime + $configuringTime + $designTime);
 
         function percent($an, $gr) {
+            if ($gr === 0)
+                return 0;
             return ($an * 100) / $gr;
         }
 
@@ -126,7 +212,6 @@
                 </div>
             </div>
         </div>
-        <div class="side-box">2</div>
         <div class="side-box">
             <h2 style="margin-bottom: 3rem">
                 Categories
@@ -169,117 +254,16 @@
             </h2>
 
             <div class="tag-box">
-                <span class="tag">
-                    CSS
-                </span>
-                <span class="tag">
-                    HTML
-                </span>
-                <span class="tag">
-                    jQuery
-                </span>
-                <span class="tag">
-                    Laravel
-                </span>
-                <span class="tag">
-                    SQL
-                </span>
-                <span class="tag">
-                    SCSS
-                </span>
+                @php
+                foreach ($tags as $tag) {
+                    if (in_array($tag->id, $tagz_arr)) {
+                        echo '<span class="tag">' .$tag->name. '</span>';
+                    }
+                }
+                @endphp
             </div>
         </div>
     </aside>
-
-    <article>
-        <ul class="first">
-            <li>
-                DATE 
-                <span>
-                    <img src="{{ asset('images/arrow-up.png') }}">
-                    <img src="{{ asset('images/arrow-down.png') }}">
-                </span>
-            </li>
-             <li>
-                TYPE 
-                <span>
-                    <img src="{{ asset('images/arrow-up.png') }}">
-                    <img src="{{ asset('images/arrow-down.png') }}">
-                </span>
-            </li>
-             <li>
-                CATEGORY 
-                <span>
-                    <img src="{{ asset('images/arrow-up.png') }}">
-                    <img src="{{ asset('images/arrow-down.png') }}">
-                </span>
-            </li>
-             <li>
-                TIME 
-                <span>
-                    <img src="{{ asset('images/arrow-up.png') }}">
-                    <img src="{{ asset('images/arrow-down.png') }}">
-                </span>
-            </li>
-             <li>
-                NOTES 
-            </li>
-             <li>
-                TAGS 
-            </li>
-            <li>
-
-            </li>
-        </ul>
-         <div>
-
-             @foreach ($data as $d)
-                <ul id="{{ $d->id }}">
-                    <li class="date">
-                        {{ $d->date }}
-                    </li>
-                    <li class="type">
-                        {{ $d->type }}
-                    </li>
-                    <li class="category">
-                        {{ $d->category }}
-                    </li>
-                    <li class="time">
-                       {{ $d->time }}h
-                    </li>
-                    <li class="notes">
-                        {{ $d->notes }}
-                    </li>
-                    <li class="tags">
-                        <span class="tag">
-                            CSS
-                        </span>
-                        <span class="tag">
-                            HTML
-                        </span>
-                        <span class="tag">
-                            jQuery
-                        </span>
-                        <span class="tag">
-                            Laravel
-                        </span>
-                        <span class="tag">
-                            SQL
-                        </span>
-                        <span class="tag">
-                            SCSS
-                        </span>
-                    </li>
-                    <li class="last">
-                        <button class="edit-button">
-                            <img src="{{ asset('images/edit.png') }}">
-                        </button>
-                    </li>
-                </ul>
-             @endforeach
-
-         </div>
-    </article>
 </section>
 
 <script src="{{ asset('js/main.js') }}"></script>
