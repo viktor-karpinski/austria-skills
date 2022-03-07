@@ -106,4 +106,8 @@ class Controller extends BaseController
 
         return 0;
     }
+
+    public function editEntry(Request $req)
+    {
+    }
 }

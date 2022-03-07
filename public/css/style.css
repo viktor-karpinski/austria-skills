@@ -9,7 +9,7 @@
   border: 0;
   border-radius: 0.5rem;
   outline: none;
-  overflow: scroll hidden;
+  overflow: hidden scroll;
 }
 
 button,
@@ -180,23 +180,83 @@ header aside a {
 
 #main aside {
   width: 25%;
-  background-color: rgba(255, 255, 255, 0.3);
-  -webkit-backdrop-filter: blur(10px);
-          backdrop-filter: blur(10px);
-  border: 0.2rem solid rgba(255, 255, 255, 0.2);
-  padding: 1rem;
 }
 
 #main aside div {
   padding: 2rem 1rem;
   width: 100%;
-  background-color: #fafafa;
+  background-color: #ffffff;
   margin-bottom: 2rem;
 }
 
 #main aside div h2 {
   font-size: 1.5rem;
   text-align: center;
+}
+
+#main aside div .tag-box {
+  padding: 1rem;
+  margin: 1rem 0 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#main aside div .tag-box span {
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 0.3rem;
+  font-size: 1rem;
+  margin: 0.25rem;
+  margin: 0 0.25rem 0.5rem;
+}
+
+#main aside div .category-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0;
+}
+
+#main aside div .category-box span {
+  padding: 0.4rem;
+  font-size: 1rem;
+  margin: 0 0.25rem 1rem;
+}
+
+#main aside div .category-box span:nth-of-type(1) {
+  background-color: coral;
+}
+
+#main aside div .category-box span:nth-of-type(2) {
+  background-color: lightblue;
+}
+
+#main aside div .category-box span:nth-of-type(3) {
+  background-color: blueviolet;
+  color: white;
+}
+
+#main aside div .category-box span:nth-of-type(4) {
+  background-color: darkgreen;
+  color: white;
+}
+
+#main aside div .category-box span:nth-of-type(5) {
+  background-color: slategray;
 }
 
 #main aside div .hour-box-container {
@@ -207,8 +267,16 @@ header aside a {
   padding: 0;
 }
 
+#main aside div .hour-box-container .chart {
+  width: 80%;
+  height: 7rem;
+  margin: auto;
+  background-color: #fafafa;
+  border-radius: 50%;
+}
+
 #main aside div .hours-box {
-  width: 46%;
+  width: 50%;
   display: block;
   padding: 0rem !important;
   text-align: center;

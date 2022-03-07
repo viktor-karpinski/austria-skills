@@ -2,6 +2,11 @@ window.onload = () => {
     checkRange('#training-time')
     checkRange('#edit-time')
 
+    setTimeout(() => {$('.chart').css({'height': $('.chart').outerWidth() + 'px'}) }, 200)
+}
+
+window.onresize = () => {
+    $('.chart').css({'height': $('.chart').outerWidth() + 'px'})
 }
 
 $('#training-time').on('input', () => {
