@@ -15,12 +15,13 @@ class CreateDataTable extends Migration
     {
         Schema::create('data', function (Blueprint $table) {
             $table->id();
-            $table->date('date')->format('d/m/Y');
+            $table->date('date')->format('d/m/Y')->duseCurrent();
             $table->string('type', 64);
             $table->string('category');
             $table->string('time');
-            $table->string('notes', 255);
-            $table->string('tags');
+            $table->string('notes', 255)->default(null);
+            $table->string('tags')->defaul(null);
+            $table->integer('user_id');
             $table->timestamps();
         });
     }

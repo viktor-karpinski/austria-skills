@@ -1,7 +1,6 @@
 @extends('master')
 
 @section('content')
-
 <header>
     <button id="add-new">
         <span>
@@ -28,19 +27,19 @@
         </h1>
 
         <button class="close" data-id="#add-box">
-            <span>X</span>
+            <span data-id="#add-box">X</span>
             Close
         </button>
 
-        <form id="add-form">
+        <form id="add-form" novalidate>
             @csrf
             <label for="training-type">
-                Type *
+                Type (minal length: 2)*
             </label>
             <span for="training-type" class="word-counter">
                 0 / 64
             </span>
-            <input id="training-type" name="training-type" type="text" placeholder="private project" class="general-input" autocomplete="off" required>
+            <input name="type" id="training-type" type="text" placeholder="private project" class="general-input" autocomplete="off" required>
             <span for="training-type" class="validation">
                 Only 
                 <span class="validation-char">a - z, A - Z</span>, 
@@ -48,20 +47,157 @@
                 <span class="validation-char">ä, ö, ü, Ä, Ö, Ü</span> are allowed.
             </span>
 
+            <h2>
+                Category *
+            </h2>
+            <div class="container">
+                <input type="radio" name="category" value="frontend" id="cat-frontend" required>
+                <input type="radio" name="category" value="backend" id="cat-backend" required>
+                <input type="radio" name="category" value="design" id="cat-design" required>
+                <input type="radio" name="category" value="fullstack" id="cat-fullstack" required>
+                <input type="radio" name="category" value="configuring" id="cat-configuring" required>
+                <label for="cat-frontend">frontend</label>
+                <label for="cat-backend">backend</label>
+                <label for="cat-design">design</label>
+                <label for="cat-fullstack">fullstack</label>
+                <label for="cat-configuring">configuring</label>
+            </div>
+
+            <h2>
+                Time spent (hours) *
+            </h2>
+            <div class="range-box">
+                <h2>1h</h2>
+                <input type="range" min="1" max="24" name="time" id="training-time" value="2" style="padding: 1rem 0">
+                <h2>24h</h2>
+            </div>
+            <h2 class="your-range" for="#training-time">
+            </h2>
+
             <label for="training-note">
                 Notes
             </label>
             <span for="training-note" class="word-counter">
                 0 / 255
             </span>
-            <textarea id="training-note" name="training-note" type="text" placeholder="I did CSS, alot." class="general-input" autocomplete="off" required></textarea>
+            <textarea id="training-note" name="note" type="text" placeholder="I did CSS, alot." class="general-input" autocomplete="off" required></textarea>
+            <p class="main-error">
+                Please include all necessary input for an entry correctly!
+            </p>
+            <button type="submit" id="add-button">
+                Add Entry
+            </button>
+        </form>
+    </article>
+</section>
+
+<section class="shadow-box">
+    <article id="editing-box">
+        <h1>
+            Edit Entry
+        </h1>
+
+        <button class="close" data-id="#editing-box">
+            <span data-id="#editing-box">X</span>
+            Close
+        </button>
+
+        <form id="editing-form" novalidate>
+            @csrf
+            <label for="edit-type">
+                Type (minal length: 2)*
+            </label>
+            <span for="edit-type" class="word-counter">
+                0 / 64
+            </span>
+            <input name="type" id="edit-type" type="text" placeholder="private project" class="general-input" autocomplete="off" required>
+            <span for="edit-type" class="validation">
+                Only 
+                <span class="validation-char">a - z, A - Z</span>, 
+                <span class="validation-char">0 - 9</span> and
+                <span class="validation-char">ä, ö, ü, Ä, Ö, Ü</span> are allowed.
+            </span>
+
+            <h2>
+                Category *
+            </h2>
+            <div class="container">
+                <input type="radio" name="ecategory" value="frontend" id="edit-frontend" required>
+                <input type="radio" name="ecategory" value="backend" id="edit-backend" required>
+                <input type="radio" name="ecategory" value="design" id="edit-design" required>
+                <input type="radio" name="ecategory" value="fullstack" id="edit-fullstack" required>
+                <input type="radio" name="ecategory" value="configuring" id="edit-configuring" required>
+                <label for="edit-frontend">frontend</label>
+                <label for="edit-backend">backend</label>
+                <label for="edit-design">design</label>
+                <label for="edit-fullstack">fullstack</label>
+                <label for="edit-configuring">configuring</label>
+            </div>
+
+            <h2>
+                Time spent (hours) *
+            </h2>
+            <div class="range-box">
+                <h2>1h</h2>
+                <input type="range" min="1" max="24" name="time" id="edit-time" value="2" style="padding: 1rem 0">
+                <h2>24h</h2>
+            </div>
+            <h2 class="your-range" for="#edit-time">
+            </h2>
+
+            <label for="edit-note">
+                Notes
+            </label>
+            <span for="edit-note" class="word-counter">
+                0 / 255
+            </span>
+            <textarea id="edit-note" name="note" type="text" placeholder="I did CSS, alot." class="general-input" autocomplete="off" required></textarea>
+            <p class="main-error">
+                Please include all necessary input for an entry correctly!
+            </p>
+            <button type="submit" id="edit-button">
+                Save
+            </button>
         </form>
     </article>
 </section>
 
 <section id="main">
     <aside id="side-box">
-        <div class="side-box">1</div>
+        <div class="side-box">
+            <h2>
+                Logged working hours
+            </h2>
+            @php
+            $total = 0;
+            $month = 0;
+            $date = date('y-m-d');
+            foreach ($data as $d) {
+                $total += $d->time;
+                if (explode('-', $d->date)[1] === explode('-', $date)[1]) {
+                    $month += $d->time;
+                }
+            }
+            @endphp
+            <div class="hour-box-container">
+                <div class="hours-box">
+                    <h2>
+                        {{ $total }}h
+                    </h2>
+                    <p>
+                    Total
+                    </p>
+                </div>
+                <div class="hours-box">
+                    <h2>
+                        {{ $month }}h
+                    </h2>
+                    <p>
+                    This Month
+                    </p>
+                </div>
+            </div>
+        </div>
         <div class="side-box">2</div>
         <div class="side-box">3</div>
         <div class="side-box">4</div>
@@ -109,122 +245,50 @@
         </ul>
          <div>
 
-            <ul>
-                <li>
-                    30.10.2022
-                </li>
-                <li>
-                    private project
-                </li>
-                <li>
-                    Frontend
-                </li>
-                <li>
-                    5h
-                </li>
-                <li>
-                    Lorem ipsum dolor sit amet. Igmund das ist Lorems.
-                </li>
-                <li>
-                    <span class="tag">
-                        CSS
-                    </span>
-                    <span class="tag">
-                        HTML
-                    </span>
-                    <span class="tag">
-                        jQuery
-                    </span>
-                    <span class="tag">
-                        Laravel
-                    </span>
-                    <span class="tag">
-                        SQL
-                    </span>
-                    <span class="tag">
-                        SCSS
-                    </span>
-                </li>
-                <li class="last">
-                    <button>
-                        <img src="{{ asset('images/edit.png') }}">
-                    </button>
-                </li>
-            </ul>
-
-            <ul>
-                <li>
-                    30.10.2022
-                </li>
-                <li>
-                    private project
-                </li>
-                <li>
-                    Frontend
-                </li>
-                <li>
-                    5h
-                </li>
-                <li>
-                    Lorem ipsum dolor sit amet. Igmund das ist Lorems.
-                </li>
-                <li>
-                    <span class="tag">
-                        CSS
-                    </span>
-                    <span class="tag">
-                        HTML
-                    </span>
-                    <span class="tag">
-                        jQuery
-                    </span>
-                    <span class="tag">
-                        Laravel
-                    </span>
-                    <span class="tag">
-                        SQL
-                    </span>
-                    <span class="tag">
-                        SCSS
-                    </span>
-                </li>
-                <li class="last">
-                    <button>
-                        <img src="{{ asset('images/edit.png') }}">
-                    </button>
-                </li>
-            </ul>
-
-            <ul>
-                <li>
-                    30.10.2022
-                </li>
-                <li>
-                    private project
-                </li>
-                <li>
-                    Frontend
-                </li>
-                <li>
-                    5h
-                </li>
-                <li>
-                    Lorem ipsum 
-                </li>
-                <li>
-                    <span class="tag">
-                        CSS
-                    </span>
-                    <span class="tag">
-                        HTML
-                    </span>
-                </li>
-                <li class="last">
-                    <button>
-                        <img src="{{ asset('images/edit.png') }}">
-                    </button>
-                </li>
-            </ul>
+             @foreach ($data as $d)
+                <ul id="{{ $d->id }}">
+                    <li class="date">
+                        {{ $d->date }}
+                    </li>
+                    <li class="type">
+                        {{ $d->type }}
+                    </li>
+                    <li class="category">
+                        {{ $d->category }}
+                    </li>
+                    <li class="time">
+                       {{ $d->time }}h
+                    </li>
+                    <li class="notes">
+                        {{ $d->notes }}
+                    </li>
+                    <li class="tags">
+                        <span class="tag">
+                            CSS
+                        </span>
+                        <span class="tag">
+                            HTML
+                        </span>
+                        <span class="tag">
+                            jQuery
+                        </span>
+                        <span class="tag">
+                            Laravel
+                        </span>
+                        <span class="tag">
+                            SQL
+                        </span>
+                        <span class="tag">
+                            SCSS
+                        </span>
+                    </li>
+                    <li class="last">
+                        <button class="edit-button">
+                            <img src="{{ asset('images/edit.png') }}">
+                        </button>
+                    </li>
+                </ul>
+             @endforeach
 
          </div>
     </article>

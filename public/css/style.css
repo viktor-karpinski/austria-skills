@@ -188,11 +188,37 @@ header aside a {
 }
 
 #main aside div {
-  cursor: pointer;
-  padding: 2rem;
+  padding: 2rem 1rem;
   width: 100%;
-  border: 0.2rem solid #fafafa;
+  background-color: #fafafa;
   margin-bottom: 2rem;
+}
+
+#main aside div h2 {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+#main aside div .hour-box-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 1rem 0 0;
+  padding: 0;
+}
+
+#main aside div .hours-box {
+  width: 46%;
+  display: block;
+  padding: 0rem !important;
+  text-align: center;
+  margin: 0;
+}
+
+#main aside div .hours-box p {
+  font-size: 1rem;
+  margin-top: 1rem;
+  color: gray;
 }
 
 #main aside div:last-of-type {
@@ -265,6 +291,8 @@ header aside a {
           justify-content: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  word-break: break-all;
+  word-wrap: break-word;
 }
 
 #main article ul li.last {
@@ -367,10 +395,73 @@ header aside a {
           flex-direction: column;
 }
 
+.shadow-box article form h2,
+.shadow-box article form label {
+  font-size: 1.5rem;
+  font-weight: lighter;
+}
+
+.shadow-box article form h2.your-range,
+.shadow-box article form label.your-range {
+  text-align: center;
+  margin: -1rem auto 1rem;
+}
+
 .shadow-box article form label {
   font-size: 1.5rem;
   margin-bottom: -1.2rem;
   z-index: 2;
+}
+
+.shadow-box article form div.container {
+  width: 100%;
+  padding: 1rem;
+  border: 0.2rem solid rgba(255, 255, 255, 0.3);
+  margin: 1.2rem auto 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  height: auto;
+}
+
+.shadow-box article form div.container input[type="radio"] {
+  height: 0;
+  width: 0;
+  display: none;
+}
+
+.shadow-box article form div.container label {
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 0.5rem;
+  margin: 0 !important;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.shadow-box article form div.container label.selected {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.shadow-box article form div.range-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 1.2rem 0 2rem;
+}
+
+.shadow-box article form div.range-box input {
+  width: 80%;
 }
 
 .shadow-box article form input,
@@ -383,6 +474,31 @@ header aside a {
   font-size: 1.5rem;
   -webkit-transition: 0.3s;
   transition: 0.3s;
+  background-color: transparent;
+}
+
+.shadow-box article form input[type="range"],
+.shadow-box article form textarea[type="range"] {
+  border: 0.2rem solid rgba(255, 255, 255, 0.3);
+  background-color: transparent;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  height: 2rem;
+}
+
+.shadow-box article form input[type="range"]::-webkit-slider-thumb,
+.shadow-box article form textarea[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+          appearance: none;
+  width: 2rem;
+  height: 2rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 0.5rem;
+}
+
+.shadow-box article form input[type="range"]:focus,
+.shadow-box article form textarea[type="range"]:focus {
   background-color: transparent;
 }
 
@@ -432,27 +548,37 @@ header aside a {
   color: #ff0000;
 }
 
-.shadow-box article form .save {
-  width: 0%;
-  height: 4rem;
+.shadow-box article form .main-error {
+  background-color: rgba(200, 0, 0, 0.3);
+  border: 0rem solid rgba(200, 0, 0, 0.3);
+  padding: 0 1rem;
   font-size: 1.5rem;
-  background-color: #4caf50;
-  color: #4caf50;
-  overflow: hidden;
-  margin: 2rem auto 0rem;
-  -webkit-transition: all 300ms cubic-bezier(0.47, 1.64, 0.41, 0.8);
-  transition: all 300ms cubic-bezier(0.47, 1.64, 0.41, 0.8);
-  border-radius: 1rem;
+  text-align: center;
+  height: 0rem;
+  display: block;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
-.shadow-box article form .save:disabled {
+.shadow-box article form .main-error.show {
+  height: auto;
+  padding: 1rem;
+  margin-top: 2rem;
+  border-width: 0.1rem;
+}
+
+.shadow-box article form button {
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  margin-top: 2rem;
+  height: 5rem;
+  background-color: #ff6b63;
+  font-size: 1.5rem;
+}
+
+.shadow-box article form button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
-}
-
-.shadow-box article form .admin-save-show {
-  width: 100%;
-  color: #ffffff;
 }
 
 .open-box {
