@@ -29,29 +29,29 @@
             <li>
                 DATE 
                 <span>
-                    <img src="{{ asset('images/arrow-up.png') }}">
-                    <img src="{{ asset('images/arrow-down.png') }}">
+                    <img class="u" data-do="date" src="{{ asset('images/arrow-up.png') }}">
+                    <img class="d" data-do="date" src="{{ asset('images/arrow-down.png') }}">
                 </span>
             </li>
              <li>
                 TYPE 
                 <span>
-                    <img src="{{ asset('images/arrow-up.png') }}">
-                    <img src="{{ asset('images/arrow-down.png') }}">
+                    <img class="u" data-do="type" src="{{ asset('images/arrow-up.png') }}">
+                    <img class="d" data-do="type" src="{{ asset('images/arrow-down.png') }}">
                 </span>
             </li>
              <li>
                 CATEGORY 
                 <span>
-                    <img src="{{ asset('images/arrow-up.png') }}">
-                    <img src="{{ asset('images/arrow-down.png') }}">
+                    <img class="u" data-do="category" src="{{ asset('images/arrow-up.png') }}">
+                    <img class="d" data-do="category" src="{{ asset('images/arrow-down.png') }}">
                 </span>
             </li>
              <li>
                 TIME 
                 <span>
-                    <img src="{{ asset('images/arrow-up.png') }}">
-                    <img src="{{ asset('images/arrow-down.png') }}">
+                    <img class="u" data-do="time" src="{{ asset('images/arrow-up.png') }}">
+                    <img class="d" data-do="time" src="{{ asset('images/arrow-down.png') }}">
                 </span>
             </li>
              <li>
@@ -64,7 +64,7 @@
 
             </li>
         </ul>
-         <div>
+         <div id="order">
             @php
             $tagz_arr = array();
             @endphp

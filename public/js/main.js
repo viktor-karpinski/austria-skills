@@ -9,6 +9,13 @@ window.onresize = () => {
     $('.chart').css({'height': $('.chart').outerWidth() + 'px'})
 }
 
+$('ul:first-of-type li span').on('click', (ev) => {
+    $('ul:first-of-type li span img').css('opacity', 0.5)
+    $(ev.target).css('opacity', 1)
+    order(($(ev.target).attr('class') === 'u') ? true: false, $(ev.target).attr('data-do'))
+    console.log(ev.target)
+})
+
 $('#training-time').on('input', () => {
     checkRange('#training-time')
 })
@@ -222,4 +229,26 @@ function checkInput(input, regex, max) {
 
 function checkRange(id) {
     $('.your-range[for="' +id+ '"]').text($(id).val() + 'h')
+}
+
+function order(up, cls) {
+    var theContainer = $("#order"), // You could use body if all the rows are children of body
+    theRows = $("#order ul").get() // an array
+
+    if (up) {
+        theRows = theRows.sort(function (a, b) {
+            var aKBPS = $("." + cls, a).text(),
+                bKBPS = $("." + cls, b).text()
+                return aKBPS > bKBPS ? -1 : aKBPS > bKBPS ? 1 : 0
+        })
+        theContainer.append(theRows)
+    } else {
+        theRows = theRows.sort(function (a, b) {
+            var aKBPS = $("." + cls, a).text(),
+                bKBPS = $("." + cls, b).text()
+                return aKBPS < bKBPS ? -1 : aKBPS < bKBPS ? 1 : 0
+        })
+        theContainer.append(theRows)
+    }
+
 }
